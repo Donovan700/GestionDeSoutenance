@@ -37,17 +37,32 @@
             $prepared_stmnt->bindParam(1,$searchString);
             $prepared_stmnt->execute();
             $data = $prepared_stmnt->fetch(PDO::FETCH_ASSOC);
-            ob_start();
-            $pdf = new FPDF ();
-            $pdf->AddPage ();
-            $pdf->SetFont ('Arial', '', 11);
-            $pdf->Cell(0, 10, 'PROCES VERBAL', 0, 1, 'C');
-            $pdf->Cell(0, 10, "SOUTENANCE DE FIN D'ETUDES POUR L'OBTENTION DU DIPLOME DE LICENCE", 0, 1, 'C');
-            $pdf->Cell(0, 10, "PROFESSIONNELLE", 0, 1, 'C');
-            $pdf->Cell(0, 10, "Mention: Informatiques", 0, 1, 'C');
-            $pdf->Cell(0, 10, "Parcours: ", 0, 1, 'C');
-            $pdf->Output ();
-            ob_end_flush();
+            $niveau = $data['niveau'];
+            $parcours = $data['parcours'];
+            if($niveau === 'L3')
+            {
+                ob_start();
+                $pdf = new FPDF ();
+                $pdf->AddPage ();
+                $pdf->SetFont ('Arial', '', 11);
+                $pdf->Cell(0, 10, 'PROCES VERBAL', 0, 1, 'C');
+                $pdf->Cell(0, 10, "SOUTENANCE DE FIN D'ETUDES POUR L'OBTENTION DU DIPLOME DE LICENCE", 0, 1, 'C');
+                $pdf->Cell(0, 10, "PROFESSIONNELLE", 0, 1, 'C');
+                $pdf->Cell(0, 10, "Mention: Informatiques", 0, 1, 'C');
+                switch($parcours)
+                {
+                    case 'GB' : $pdf->Cell(0, 10, "Parcours: Genie Logiciel et Base de Donnees", 0, 1, 'C'); break;
+                    case 'SR' : $pdf->Cell(0, 10, "Parcours: Systeme et Reseau", 0, 1, 'C'); break;
+                    case 'IG' : $pdf->Cell(0, 10, "Parcours: Informatique general", 0, 1, 'C'); break;
+                    default : echo "Improbable";
+                }
+                $pdf->Output ();
+                ob_end_flush();
+            }
+            else
+            {
+                echo "M2";
+            }
         }
     ?>
     <table>
