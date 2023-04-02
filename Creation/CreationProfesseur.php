@@ -35,8 +35,8 @@
         <label for="grade">Grade: </label>
         <select name="grade" id="grade">
             <option value="Professeur titulaire">Professeur titulaire</option>
-            <option value="Maitre de conférences">Maître de conférences</option>
-            <option value="Assistant d'Enseignement Supérieur et de Recherche">Assistant d’Enseignement Supérieur et de Recherche</option>
+            <option value="Maitre de conferences">Maître de conférences</option>
+            <option value="Assistant d'Enseignement Superieur et de Recherche">Assistant d’Enseignement Supérieur et de Recherche</option>
             <option value="Docteur en HDR">Docteur HDR</option>
             <option value="docteur en informatiques">Docteur en informatiques</option>
             <option value="doctorant en informatiques">Doctorant en informatiques</option>

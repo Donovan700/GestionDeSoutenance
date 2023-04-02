@@ -89,7 +89,7 @@
         <?php else : ?>
             <?php if($result && $prepared_stmnt->rowCount() > 0) : ?>
             <tbody>
-            <?php while($row = $prepared_stmnt->fetch(PDO::FETCH_ASSOC)) : ?>
+            <?php while($result = $prepared_stmnt->fetch(PDO::FETCH_ASSOC)) : ?>
             <tr>
                 <td><?php echo htmlspecialchars($result['matricule']);?></td>
                 <td><?php echo htmlspecialchars($result['nom_etudiant']);?></td>
